@@ -99,7 +99,7 @@ Držela jsem se následujících pravidel:
     * Zpracovávám požadavky dle zadání [Požadavky na definice tabulek](https://docs.google.com/spreadsheets/d/1lnZX6YGuYmDbdjT-_SWmQHqVvUP41Q-qgKdmTvIgEYQ/edit?usp=sharing).
     * Zohledňuji další požadavky, které jsou uvedeny v [Zadání pro tvorbu L2](https://docs.google.com/document/d/1bxdqGh7H_8Yob5oPGZ5RtzXq2C38D7JBOlYBWUmo3y0/edit?usp=sharing).
 
-V zadání Požadavky na definice tabulek bylo nutné probrat s business stakeholderem požadavek "Table should contain:products that has not been cancelled or disconnected. Null status should be also excluded". Rozporovala jsem tento technický požadavek vůči business požadavku "Existují ještě produkty, které nakupovali?" Na základě diskuze s business stakeholderem a zadávajícími datovými inženýry byl tento požadavek zrušen.
+    V zadání Požadavky na definice tabulek bylo nutné probrat s business stakeholderem požadavek "Table should contain:products that has not been cancelled or disconnected. Null status should be also excluded". Rozporovala jsem tento technický požadavek vůči business požadavku "Existují ještě produkty, které nakupovali?" Na základě diskuze s business stakeholderem a zadávajícími datovými inženýry byl tento požadavek zrušen.
 
 3) Pro každou tabulku jsem vytvořila skripty pro doplnění dokumentace, kde jsem se soustředila na zdokumentování všech transformací.
 
@@ -127,24 +127,24 @@ Postup:
 2) Do datasetu L3_all_tables jsem vytvořila 1 hlavní FLAT tabulku L3_main_report, která spojuje tabulky L2_contract a L2_product_purchase + přidává 1 sloupec s informací o obratu na kontraktu z tabulky L2_invoice. Vzhledem k tomu, že cílem bylo odpovědět na velmi obecené business otázky, bylo v této fázi třeba mnoho věcí prodiskutovat s businessem a upřesnit si výstup, který očekává. Mým cílem bylo doplnit v rámci L3 vrstvy do hlavní tabulky takové sloupce, na které se už jednoduše napojí reporty s různými grafy.
 
     Příklady dopočítaných sloupců:
-        * contract_length_in_months: délka trvání kontraktu v měsících
-        * contract_length_in_months_category:  rozdělení délky trvání kontraktu měsících do kategorií
-        * contract_turnover_wo_vat_usd: obrat na daném kontraktu počítaný ze sumy amount_wo_vat_usd na fakturách (invoice)
-        * contract_turnover_wo_vat_category: rozdělení obratu na daném kontraktu do kategorií
-        * product_purchase_count: počet nákupů na daném kontaktu
-        * count_product_purchase_category: rozdělení počtu nákupů na daném kontaktu do kategorií
-        * turnover_weighted_product_purchase_count: obratem vážený počet nákupů - vyjadřuje počet nákupů, které musím udělat, abych měl 1 USD
-        * turnover_weighted_product_purchase_count_category: rozdělení obratem váženého počtu nákupů do kategorií
-        * lost_or_existing: ztracený zákazník (lost) nebo existující zákazník
-        * impact_of_product_cancellation_to_customer: kategorizace ztracených zákazníků, zda odešli z důvodu ukončení produktu nebo z jiného důvodu
-        * min_product_template_valid_from: odkdy začal platit daný typ produktu (bez vazby na kontrakt a nákup)
-        * max_product_template_valid_to: kdy skončila platnost daného typu produktu (bez vazby na kontrakt a nákup)
-        * is_product_finished: všechny produkty, kterým skončila platnost daného typu produktu (bez vazby na konrakt a nákup) do konce září 24 klasifikujeme jako skončené
-        * products_finished_leading_to_customer_left: Kategorizace ukončených produktů, zda ukončení produktu vedlo ke ztrátě zákazníka nebo nevedlo
-        * min_product_valid_from: minimální product_valid_from pro každý kontrakt (kdy byl nakoupen 1. produkt)
-        * is_last_product: flag (true/false), zda jde o poslední produkt na daném kontraktu (platnost do = maximální platnost do pro kontrakt)
+    * contract_length_in_months: délka trvání kontraktu v měsících
+    * contract_length_in_months_category:  rozdělení délky trvání kontraktu měsících do kategorií
+    * contract_turnover_wo_vat_usd: obrat na daném kontraktu počítaný ze sumy amount_wo_vat_usd na fakturách (invoice)
+    * contract_turnover_wo_vat_category: rozdělení obratu na daném kontraktu do kategorií
+    * product_purchase_count: počet nákupů na daném kontaktu
+    * count_product_purchase_category: rozdělení počtu nákupů na daném kontaktu do kategorií
+    * turnover_weighted_product_purchase_count: obratem vážený počet nákupů - vyjadřuje počet nákupů, které musím udělat, abych měl 1 USD
+    * turnover_weighted_product_purchase_count_category: rozdělení obratem váženého počtu nákupů do kategorií
+    * lost_or_existing: ztracený zákazník (lost) nebo existující zákazník
+    * impact_of_product_cancellation_to_customer: kategorizace ztracených zákazníků, zda odešli z důvodu ukončení produktu nebo z jiného důvodu
+    * min_product_template_valid_from: odkdy začal platit daný typ produktu (bez vazby na kontrakt a nákup)
+    * max_product_template_valid_to: kdy skončila platnost daného typu produktu (bez vazby na kontrakt a nákup)
+    * is_product_finished: všechny produkty, kterým skončila platnost daného typu produktu (bez vazby na konrakt a nákup) do konce září 24 klasifikujeme jako skončené
+    * products_finished_leading_to_customer_left: Kategorizace ukončených produktů, zda ukončení produktu vedlo ke ztrátě zákazníka nebo nevedlo
+    * min_product_valid_from: minimální product_valid_from pro každý kontrakt (kdy byl nakoupen 1. produkt)
+    * is_last_product: flag (true/false), zda jde o poslední produkt na daném kontraktu (platnost do = maximální platnost do pro kontrakt)
 
-3) Do datasetu L3_all_tables jsem přidala ještě samostanou tabulku s údaji o zákaznících (=kontraktech) L3_main_report_cu, odvozená z hlavní FLAT tabulky, kde 1 řádek = 1 kontrakt. Narozdíl od hlavní tabulky neobsahuje detailní údaje o všech product_purchase, takže se sní lépe pracuje při přípravě reportů, které se vážou k zákazníkovi a ne ke konkrétním nákupům.
+3) Do datasetu L3_all_tables jsem přidala ještě samostanou tabulku s údaji o zákaznících (=kontraktech) L3_main_report_cu, odvozená z hlavní FLAT tabulky, kde 1 řádek = 1 kontrakt. Narozdíl od hlavní tabulky neobsahuje detailní údaje o všech product_purchase, takže se s ní lépe pracuje při přípravě reportů, které se vážou k zákazníkovi a ne ke konkrétním nákupům.
       
 ---
 ## Looker Studio report
