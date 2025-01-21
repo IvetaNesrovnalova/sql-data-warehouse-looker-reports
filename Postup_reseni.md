@@ -151,7 +151,7 @@ Postup:
 ## Looker Studio report
 ---
 
-1) Do Looker Studia jsem napojila v BigQuery nachystané tabulky z vrstvy L3, tj. L3_main_report a L3_main_report_cu na základě nich jsem postavila report s údaji, grafy (s možností filtrování), který z různých úhlů pohledu zodpovídá na 3 základní business otázky, které byly v rámci přípravy L3 na základě doplňujících otázek s business stakeholderem upřesněny.
+1) Do Looker Studia jsem napojila v BigQuery nachystané tabulky z vrstvy L3, tj. L3_main_report a L3_main_report_cu na základě nich jsem postavila [Looker Studio report](https://lookerstudio.google.com/s/qR4a9vwV5gc) s údaji, grafy (s možností filtrování), který z různých úhlů pohledu zodpovídá na 3 základní business otázky, které byly v rámci přípravy L3 na základě doplňujících otázek s business stakeholderem upřesněny.
 
     * Kteří zákazníci a kdy odcházejí? -> Co je společným znakem pro ukončené kontrakty? Jaká je průměrná doba (median) setrvání kontraktu? Odchod zákadzníka definujeme jako zrušení kontrkatu i situaci, kdy po nějakou dobu nic nezakoupil.
     * Nakupují málo/hodně? -> Četnost nákupu, množství zakoupených produktu, četnost vážená obratem bez dph, ideálně rozšířená o vámi navrhnuté skupiny (biny) 
