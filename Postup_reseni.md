@@ -157,4 +157,4 @@ Postup:
     * Nakupují málo/hodně? -> Četnost nákupu, množství zakoupených produktu, četnost vážená obratem bez dph, ideálně rozšířená o vámi navrhnuté skupiny (biny) 
     * Existují ještě produkty, které nakupovali? -> konec produktů zjistíme, že už nebyla možnost si koupit, takže od nějakého datumu neměly žádného zákazníka
 
-    Pozn.: Během projektu byl Looker Studio report napojen přímo na tabulky v BigQuery v rámci 3-měsíčního trialu. Před vypršením BigQuery trialu jsem výsledné L3 tabulky převedla do .csv a napojila jsem Looker Studio report na .csv. Vykreslování některých stran reportu je v důsledku napojení na .csv pomalejší, než při napojení na BigQuery.
+    Pozn.: Během projektu byl Looker Studio report napojen přímo na tabulky v BigQuery v rámci 3-měsíčního trialu. Před vypršením BigQuery trialu jsem výsledné L3 tabulky převedla do souborů .csv a napojila jsem Looker Studio report na .csv soubory. Vykreslování některých stran reportu je v důsledku napojení na .csv soubory pomalejší, než při napojení na BigQuery.
